@@ -37,8 +37,8 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
 
-        mPhoneNo.setText(mRepository.getPhone());
-        mNameAndSurname.setText(mRepository.getName() + " " + mRepository.getSurname());
+//        mPhoneNo.setText(mRepository.getPhone());
+//        mNameAndSurname.setText(mRepository.getName() + " " + mRepository.getSurname());
         if (!mAccessPermission.isAccessPermission()) {
             showAskDialog();
 

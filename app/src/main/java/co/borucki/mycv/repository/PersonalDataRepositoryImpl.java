@@ -29,7 +29,7 @@ public class PersonalDataRepositoryImpl implements PersonalDataRepository {
 
     @Override
     public String getPhone() {
-        return mSharedPreferences.getPhome();
+        return mSharedPreferences.getPhone();
     }
 
     @Override

@@ -37,7 +37,7 @@ public class MyCVSharedPreferences {
         editor.commit();
     }
 
-    public String getPhome() {
+    public String getPhone() {
         return mSharedPreferences.getString(PHONE, "Phone No.");
 
     }
