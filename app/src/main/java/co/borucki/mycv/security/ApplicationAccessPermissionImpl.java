@@ -13,7 +13,7 @@ public class ApplicationAccessPermissionImpl implements ApplicationAccessPermiss
 
     }
 
-    public ApplicationAccessPermissionImpl() {
+    private ApplicationAccessPermissionImpl() {
         mSharedPreferences = AndroidApplication.getSharedPreferences();
     }
 
@@ -25,5 +25,25 @@ public class ApplicationAccessPermissionImpl implements ApplicationAccessPermiss
     @Override
     public void setAccessPermission(boolean accessPermission) {
         mSharedPreferences.setAccessPermission(accessPermission);
+    }
+
+    @Override
+    public String getAccessMail() {
+        return mSharedPreferences.getAccessPermissionMail();
+    }
+
+    @Override
+    public void setAccessMail(String mail) {
+        mSharedPreferences.setAccessPermissionMail(mail);
+    }
+
+    @Override
+    public String getAccessPassword() {
+        return mSharedPreferences.getAccessPermissionPassword();
+    }
+
+    @Override
+    public void setAccessPassword(String password) {
+        mSharedPreferences.setAccessPermissionPassword(password);
     }
 }

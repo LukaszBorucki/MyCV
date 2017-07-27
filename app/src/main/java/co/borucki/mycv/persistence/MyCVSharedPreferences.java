@@ -10,8 +10,11 @@ public class MyCVSharedPreferences {
     private static final String SURNAME = "surname";
     private static final String PHONE = "phone";
     private static final String ACCESS_PERMISSION = "access_permission";
+    private static final String ACCESS_PERMISSION_PASSWORD = "access_permission_password";
+    private static final String ACCESS_PERMISSION_MAIL = "access_permission_mail";
 
-    protected final SharedPreferences mSharedPreferences;
+
+    private final SharedPreferences mSharedPreferences;
 
     public MyCVSharedPreferences(Context context) {
         mSharedPreferences = context.getSharedPreferences(PERSONAL_DATA_SHARED_PREFERENCES, context.MODE_PRIVATE);
@@ -49,14 +52,37 @@ public class MyCVSharedPreferences {
 
     }
 
-    public boolean isAccessPermited(){
+    public boolean isAccessPermited() {
         return mSharedPreferences.getBoolean(ACCESS_PERMISSION, false);
     }
-    public void setAccessPermission(boolean accessPermission){
+
+    public void setAccessPermission(boolean accessPermission) {
         SharedPreferences.Editor editor = mSharedPreferences.edit();
-        editor.putBoolean(ACCESS_PERMISSION,accessPermission);
+        editor.putBoolean(ACCESS_PERMISSION, accessPermission);
         editor.commit();
 
     }
 
+    public void setAccessPermissionPassword(String password) {
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putString(ACCESS_PERMISSION_PASSWORD, password);
+        editor.commit();
+
+    }
+
+    public String getAccessPermissionPassword() {
+        return mSharedPreferences.getString(ACCESS_PERMISSION_PASSWORD, "password");
+    }
+
+    public String getAccessPermissionMail() {
+
+        return mSharedPreferences.getString(ACCESS_PERMISSION_MAIL, "mail");
+    }
+
+    public void setAccessPermissionMail(String mail) {
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putString(ACCESS_PERMISSION_MAIL, mail);
+        editor.commit();
+
+    }
 }
