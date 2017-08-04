@@ -1,16 +1,23 @@
 package co.borucki.mycv.view;
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
@@ -49,6 +56,20 @@ public class SplashActivity extends AppCompatActivity {
     @BindView(R.id.splash_activity_phone_no)
     TextView mPhoneNo;
 
+    private boolean handlerFlag = false;
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        handlerFlag = true;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        handlerFlag = false;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,18 +80,18 @@ public class SplashActivity extends AppCompatActivity {
         if (mAccessPermission.getAccessMail().equals("mail")
                 || mAccessPermission.getAccessMail() == null) {
             showAskDialogRegister();
-        }
-
-        if (!mAccessPermission.isAccessPermission()
+        } else if (!mAccessPermission.isAccessPermission()
                 && (!mAccessPermission.getAccessMail().equals("mail")
                 && mAccessPermission.getAccessMail() != null)) {
             showAskDialogLogin();
+        } else {
+            runMainScrees();
         }
-
 
     }
 
     private void setSplashActivityData() {
+        setImageFromString(mRepository.getPhoto());
         mPhoneNo.setText(mRepository.getPhone());
         mNameAndSurname.setText(mRepository.getName() + " " + mRepository.getSurname());
     }
@@ -135,6 +156,24 @@ public class SplashActivity extends AppCompatActivity {
                     }
                 });
         builder.create().show();
+
+    }
+
+    private void runMainScrees() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (!handlerFlag) {
+                    navigateToMenuScreen();
+                }
+            }
+        }, 3000);
+
+    }
+
+    private void navigateToMenuScreen() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
 
     }
 
@@ -260,8 +299,22 @@ public class SplashActivity extends AppCompatActivity {
             mRepository.setName(personalData.getName());
             mRepository.setSurname(personalData.getSurname());
             mRepository.setPhone(personalData.getPhoneNo());
+            mRepository.setEmail(personalData.getEmail());
+            mRepository.setWebService(personalData.getWebService());
+            mRepository.setHomeAddressCity(personalData.getCity());
+            mRepository.setHomeAddressStreet(personalData.getStreet());
+            mRepository.setHomeAddressNo(personalData.getHouseNo());
+            mRepository.setHomeAddressPost(personalData.getPostCode());
+            mRepository.setHomeAddressGoogleLocation(personalData.getGoogleLocation());
+            mRepository.setSkypeUserName(personalData.getSkype());
+            mRepository.setLinkedInProfile(personalData.getLinkedIn());
+            mRepository.setGitHubProfile(personalData.getGitHub());
+            mRepository.setPhoto(personalData.getPhoto());
             mNameAndSurname.setText(mRepository.getName() + " " + mRepository.getSurname());
             mPhoneNo.setText(mRepository.getPhone());
+            setImageFromString(personalData.getPhoto());
+
+            runMainScrees();
         }
 
         @Override
@@ -279,4 +332,19 @@ public class SplashActivity extends AppCompatActivity {
         }
     }
 
+
+    public void setImageFromString(String bitmap){
+        if( !bitmap.equalsIgnoreCase("") ){
+            Bitmap bitmapDecode = decodeBase64(bitmap);
+
+            mImage.setImageBitmap(bitmapDecode);
+        }
+
+    }
+
+    public static Bitmap decodeBase64(String input)
+    {
+        byte[] decodedByte = Base64.decode(input, 0);
+        return BitmapFactory.decodeByteArray(decodedByte, 0,   decodedByte.length);
+    }
 }

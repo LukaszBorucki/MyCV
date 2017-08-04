@@ -15,11 +15,12 @@ public class PersonalData {
     private String skype;
     private String linkedIn;
     private String googleLocation;
+    private String photo;
 
     public PersonalData() {
     }
 
-    public PersonalData(String name, String surname, String phoneNo, String email, String city, String street, String houseNo, String postCode, String gitHub, String webService, String skype, String linkedIn, String googleLocation) {
+    public PersonalData(String name, String surname, String phoneNo, String email, String city, String street, String houseNo, String postCode, String gitHub, String webService, String skype, String linkedIn, String googleLocation, String photo) {
         this.name = name;
         this.surname = surname;
         this.phoneNo = phoneNo;
@@ -33,6 +34,7 @@ public class PersonalData {
         this.skype = skype;
         this.linkedIn = linkedIn;
         this.googleLocation = googleLocation;
+        this.photo = photo;
     }
 
     public String getName() {
@@ -137,5 +139,13 @@ public class PersonalData {
 
     public void setGoogleLocation(String googleLocation) {
         this.googleLocation = googleLocation;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

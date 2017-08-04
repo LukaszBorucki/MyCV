@@ -18,7 +18,8 @@ public class Mapper {
                 , personalDataDTO.getWebService()
                 , personalDataDTO.getSkype()
                 , personalDataDTO.getLinkedIn()
-                , personalDataDTO.getGoogleLocation());
+                , personalDataDTO.getGoogleLocation()
+                , personalDataDTO.getPhoto());
 
     }
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigationMenuContact"
+        android:icon="@drawable/ic_list_black_24dp"
+        android:title="@string/contact" />
+    <item
+        android:id="@+id/navigationMenuExperience"
+        android:icon="@drawable/ic_list_black_24dp"
+        android:title="@string/experience" />
+    <item
+        android:id="@+id/navigationMenuEducation"
+        android:icon="@drawable/education"
+        android:title="@string/education" />
+    <item
+        android:id="@+id/navigationMenuSkills"
+        android:icon="@drawable/ic_list_black_24dp"
+        android:title="@string/skills" />
+    <item
+        android:id="@+id/navigationMenuHobby"
+        android:icon="@drawable/ic_bike_black_24dp"
+        android:title="@string/hobby" />
+    <item
+        android:id="@+id/navigationMenuSendMail"
+        android:icon="@drawable/ic_mail_black_24dp"
+        android:title="@string/send_a_message" />
+
+</menu>
