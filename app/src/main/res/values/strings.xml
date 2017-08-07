@@ -20,4 +20,7 @@
     <string name="my_mane_surname_phone">Name Surname Phone_No.</string>
     <string name="education_thesis_topic">Thesis topic:</string>
     <string name="education_applied_technologies">Applied technologies:</string>
+    <string name="education_level_of_education">Level of education:</string>
+    <string name="academy_logotype">Academy Logotype</string>
+
 </resources>
