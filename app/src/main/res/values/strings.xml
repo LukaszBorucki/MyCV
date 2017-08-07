@@ -18,4 +18,6 @@
     <string name="mail_service_subject">Message from my CV app</string>
     <string name="mail_service_message">We invite you to an interview</string>
     <string name="my_mane_surname_phone">Name Surname Phone_No.</string>
+    <string name="education_thesis_topic">Thesis topic:</string>
+    <string name="education_applied_technologies">Applied technologies:</string>
 </resources>
