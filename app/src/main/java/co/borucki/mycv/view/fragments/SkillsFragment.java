@@ -9,9 +9,6 @@ import android.view.ViewGroup;
 
 import co.borucki.mycv.R;
 
-/**
- * Created by Lukasz on 2017-08-07.
- */
 
 public class SkillsFragment extends Fragment {
     public SkillsFragment() {
