@@ -22,40 +22,40 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
-        android:background="@android:color/holo_blue_bright"/>
+        android:background="@color/unchecked"/>
     <ImageView
         android:id="@+id/skills_technologies_single_row_2"
         android:layout_margin="5dp"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
-        android:background="@android:color/holo_blue_bright"/>
+        android:background="@color/unchecked"/>
     <ImageView
         android:id="@+id/skills_technologies_single_row_3"
         android:layout_margin="5dp"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
-        android:background="@android:color/holo_blue_bright"/>
+        android:background="@color/unchecked"/>
     <ImageView
         android:id="@+id/skills_technologies_single_row_4"
         android:layout_margin="5dp"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
-        android:background="@android:color/holo_blue_bright"/>
+        android:background="@color/unchecked"/>
     <ImageView
         android:id="@+id/skills_technologies_single_row_5"
         android:layout_margin="5dp"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
-        android:background="@android:color/holo_blue_bright"/>
+        android:background="@color/unchecked"/>
     <ImageView
         android:id="@+id/skills_technologies_single_row_6"
         android:layout_margin="5dp"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
-        android:background="@android:color/holo_blue_bright"/>
+        android:background="@color/unchecked"/>
 </LinearLayout>
