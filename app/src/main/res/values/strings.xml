@@ -8,4 +8,19 @@
     <string name="splash_data_dialog_user_surname">Surname</string>
     <string name="dialog_info">Info:</string>
     <string name="dialog_info_text">After registration on your e-mail address I will send password to MyCV application.\nPlease be patient email with the password I send once a day.</string>
+    <string name="education">Education</string>
+    <string name="skills">Skills</string>
+    <string name="hobby">Hobby</string>
+    <string name="send_a_message">Send a message</string>
+    <string name="experience">Experience</string>
+    <string name="contact">Contact</string>
+    <string name="error_no_skype">Sorry, no Skype installed on your device.</string>
+    <string name="mail_service_subject">Message from my CV app</string>
+    <string name="mail_service_message">We invite you to an interview</string>
+    <string name="my_mane_surname_phone">Name Surname Phone_No.</string>
+    <string name="education_thesis_topic">Thesis topic:</string>
+    <string name="education_applied_technologies">Applied technologies:</string>
+    <string name="education_level_of_education">Level of education:</string>
+    <string name="academy_logotype">Academy Logotype</string>
+
 </resources>

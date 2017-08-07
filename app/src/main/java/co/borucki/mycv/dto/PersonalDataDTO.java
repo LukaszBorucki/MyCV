@@ -16,11 +16,12 @@ public class PersonalDataDTO {
     private String skype;
     private String linkedIn;
     private String googleLocation;
+    private String photo;
 
     public PersonalDataDTO() {
     }
 
-    public PersonalDataDTO(Long id, String name, String surname, String phoneNo, String email, String city, String street, String houseNo, String postCode, String gitHub, String webService, String skype, String linkedIn, String googleLocation) {
+    public PersonalDataDTO(Long id, String name, String surname, String phoneNo, String email, String city, String street, String houseNo, String postCode, String gitHub, String webService, String skype, String linkedIn, String googleLocation, String photo) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -35,6 +36,7 @@ public class PersonalDataDTO {
         this.skype = skype;
         this.linkedIn = linkedIn;
         this.googleLocation = googleLocation;
+        this.photo = photo;
     }
 
     public Long getId() {
@@ -147,5 +149,13 @@ public class PersonalDataDTO {
 
     public void setGoogleLocation(String googleLocation) {
         this.googleLocation = googleLocation;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }
