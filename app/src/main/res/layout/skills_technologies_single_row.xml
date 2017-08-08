@@ -7,12 +7,13 @@
         android:padding="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_check_black_24dp"/>
+        android:src="@drawable/ic_check_dark_blue_24dp"/>
 <TextView
     android:id="@+id/skills_technologies_single_row_text"
     android:layout_gravity="center"
     android:padding="5dp"
-    android:textColor="@android:color/black"
+    android:textStyle="bold"
+    android:textColor="@color/checked"
     android:textSize="18sp"
     android:layout_width="130dp"
     android:layout_height="wrap_content"/>

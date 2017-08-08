@@ -27,7 +27,7 @@ public class SkillsTraitsAdapter extends RecyclerView.Adapter<SkillsTraitsAdapte
     }
     @Override
     public MySkillsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mLayoutInflater.inflate(R.layout.skills_technologies_single_row, parent, false);
+        View view = mLayoutInflater.inflate(R.layout.skills_traits_single_row, parent, false);
 
         return new MySkillsViewHolder(view);
     }
@@ -35,8 +35,6 @@ public class SkillsTraitsAdapter extends RecyclerView.Adapter<SkillsTraitsAdapte
     @Override
     public void onBindViewHolder(MySkillsViewHolder holder, int position) {
         MySkills mySkills = mData.get(position);
-        Resources res = holder.itemView.getContext().getResources();
-
         holder.mText.setText(mySkills.getName());
 
     }
