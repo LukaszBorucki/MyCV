@@ -121,7 +121,8 @@ public class Mapper {
         return new Employer(employerDTO.getCompanyName()
                 , fromBranchDToToBranch(employerDTO.getBranch())
                 , fromPeriodOfEmploymentDTOToPeriodOfEmployment(employerDTO.getPeriodOfEmployment())
-                , fromProjectDTOToProject(employerDTO.getProjects()));
+                , fromProjectDTOToProject(employerDTO.getProjects())
+                , employerDTO.getLogotype());
     }
 
     public static List<Employer> fromEmployerDTOToEmployer(List<EmployerDTO> employerDTOs) {
@@ -130,7 +131,8 @@ public class Mapper {
             employers.add(new Employer(employerDTO.getCompanyName()
                     , fromBranchDToToBranch(employerDTO.getBranch())
                     , fromPeriodOfEmploymentDTOToPeriodOfEmployment(employerDTO.getPeriodOfEmployment())
-                    , fromProjectDTOToProject(employerDTO.getProjects())));
+                    , fromProjectDTOToProject(employerDTO.getProjects())
+                    , employerDTO.getLogotype()));
         }
 
         return employers;

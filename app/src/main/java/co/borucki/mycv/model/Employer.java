@@ -8,15 +8,17 @@ public class Employer {
     private List<Branch> branch;
     private List<PeriodOfEmployment> periodOfEmployment;
     private List<Project> projects;
+    private String logotype;
 
     public Employer() {
     }
 
-    public Employer(String companyName, List<Branch> branch, List<PeriodOfEmployment> periodOfEmployment, List<Project> projects) {
+    public Employer(String companyName, List<Branch> branch, List<PeriodOfEmployment> periodOfEmployment, List<Project> projects, String logotype) {
         this.companyName = companyName;
         this.branch = branch;
         this.periodOfEmployment = periodOfEmployment;
         this.projects = projects;
+        this.logotype = logotype;
     }
 
     public String getCompanyName() {
@@ -49,5 +51,13 @@ public class Employer {
 
     public void setProjects(List<Project> projects) {
         this.projects = projects;
+    }
+
+    public String getLogotype() {
+        return logotype;
+    }
+
+    public void setLogotype(String logotype) {
+        this.logotype = logotype;
     }
 }

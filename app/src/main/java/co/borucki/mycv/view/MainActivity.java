@@ -26,6 +26,7 @@ import co.borucki.mycv.repository.PersonalDataRepository;
 import co.borucki.mycv.repository.PersonalDataRepositoryImpl;
 import co.borucki.mycv.view.fragments.ContactFragment;
 import co.borucki.mycv.view.fragments.EducationFragment;
+import co.borucki.mycv.view.fragments.ExperienceFragment;
 import co.borucki.mycv.view.fragments.SkillsFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -103,10 +104,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.navigationMenuContact:
                 item.setIcon(R.drawable.ic_contact_black_24dp);
                 fragment = ContactFragment.newInstance();
-//                Toast.makeText(this, getString(R.string.contact), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.navigationMenuExperience:
-//                fragment = ExperienceFragment.newInstance();
+                fragment = ExperienceFragment.newInstance();
                 break;
             case R.id.navigationMenuEducation:
                 fragment = EducationFragment.newInstance();

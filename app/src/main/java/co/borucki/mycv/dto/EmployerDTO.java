@@ -9,16 +9,18 @@ public class EmployerDTO {
     private List<BranchDTO> branch;
     private List<PeriodOfEmploymentDTO> periodOfEmployment;
     private List<ProjectDTO> projects;
+    private String logotype;
 
     public EmployerDTO() {
     }
 
-    public EmployerDTO(Long id, String companyName, List<BranchDTO> branch, List<PeriodOfEmploymentDTO> periodOfEmployment, List<ProjectDTO> projects) {
+    public EmployerDTO(Long id, String companyName, List<BranchDTO> branch, List<PeriodOfEmploymentDTO> periodOfEmployment, List<ProjectDTO> projects, String logotype) {
         this.id = id;
         this.companyName = companyName;
         this.branch = branch;
         this.periodOfEmployment = periodOfEmployment;
         this.projects = projects;
+        this.logotype = logotype;
     }
 
     public Long getId() {
@@ -59,5 +61,13 @@ public class EmployerDTO {
 
     public void setProjects(List<ProjectDTO> projects) {
         this.projects = projects;
+    }
+
+    public String getLogotype() {
+        return logotype;
+    }
+
+    public void setLogotype(String logotype) {
+        this.logotype = logotype;
     }
 }
