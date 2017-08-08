@@ -6,7 +6,7 @@
         android:title="@string/contact" />
     <item
         android:id="@+id/navigationMenuExperience"
-        android:icon="@drawable/ic_list_black_24dp"
+        android:icon="@drawable/work"
         android:title="@string/experience" />
     <item
         android:id="@+id/navigationMenuEducation"
@@ -14,8 +14,12 @@
         android:title="@string/education" />
     <item
         android:id="@+id/navigationMenuSkills"
-        android:icon="@drawable/ic_list_black_24dp"
+        android:icon="@drawable/skills"
         android:title="@string/skills" />
+    <item
+        android:id="@+id/navigationMenuForeignLanguages"
+        android:icon="@drawable/ic_foreign_languages_black_24dp"
+        android:title="@string/menu_foreign_languages" />
     <item
         android:id="@+id/navigationMenuHobby"
         android:icon="@drawable/ic_bike_black_24dp"
