@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_margin="@dimen/margin">
+    android:layout_margin="@dimen/margin"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,10 +11,10 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:contentDescription="@string/academy_logotype"
             android:id="@+id/education_single_row_logotype"
             android:layout_width="150dp"
-            android:layout_height="150dp" />
+            android:layout_height="150dp"
+            android:contentDescription="@string/academy_logotype" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,93 +22,105 @@
             android:orientation="vertical">
 
             <TextView
-                android:textColor="@android:color/black"
-                android:textStyle="bold|italic"
-                android:textSize="20sp"
                 android:id="@+id/education_single_row_academy"
-                android:padding="@dimen/padding"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+                android:paddingLeft="@dimen/padding"
+                android:paddingStart="@dimen/padding"
+                android:paddingEnd="@dimen/padding"
+                android:paddingRight="@dimen/padding"
+                android:textColor="@color/checked"
+                android:textSize="20sp"
+                android:textStyle="bold|italic" />
+            <android.support.v4.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
 
             <TextView
-                android:textColor="@android:color/black"
                 android:id="@+id/education_single_row_faculty"
-                android:textStyle="bold|italic"
-                android:textSize="18sp"
-                android:padding="@dimen/padding"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+                android:paddingLeft="@dimen/padding"
+                android:paddingStart="@dimen/padding"
+                android:paddingEnd="@dimen/padding"
+                android:paddingRight="@dimen/padding"
+                android:textColor="@color/checked"
+                android:textSize="18sp"
+                android:textStyle="bold|italic" />
 
             <android.support.v4.widget.Space
                 android:layout_width="match_parent"
-                android:layout_height="10dp" />
+                android:layout_height="5dp" />
 
             <TextView
-                android:textColor="@android:color/black"
                 android:id="@+id/education_single_row_start_date"
-                android:textStyle="bold|italic"
-                android:textSize="18sp"
-                android:paddingLeft="@dimen/padding"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                 />
+                android:paddingLeft="@dimen/padding"
+                android:paddingStart="@dimen/padding"
+                android:paddingEnd="@dimen/padding"
+                android:paddingRight="@dimen/padding"
+                android:textColor="@color/checked"
+                android:textSize="18sp"
+                android:textStyle="bold|italic" />
 
             <TextView
-                android:textColor="@android:color/black"
                 android:id="@+id/education_single_row_end_date"
-                android:paddingRight="@dimen/padding"
-                android:textStyle="bold|italic"
-                android:textSize="18sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
-
-                />
+                android:paddingLeft="32dp"
+                android:paddingRight="@dimen/padding"
+                android:textColor="@color/checked"
+                android:textSize="18sp"
+                android:textStyle="bold|italic" />
         </LinearLayout>
     </LinearLayout>
+
     <android.support.v4.widget.Space
         android:layout_width="match_parent"
         android:layout_height="10dp" />
-<TextView
-    android:textColor="@android:color/black"
-    android:id="@+id/education_single_row_course"
-    android:textStyle="bold"
-    android:textSize="16sp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    />
-    <android.support.v4.widget.Space
-        android:layout_width="match_parent"
-        android:layout_height="10dp" />
+
     <TextView
-        android:textColor="@android:color/black"
+        android:id="@+id/education_single_row_course"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/checked"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+    <TextView
         android:id="@+id/education_single_row_level_of_education"
-        android:textStyle="bold"
-        android:textSize="16sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:textColor="@color/checked"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
     <android.support.v4.widget.Space
         android:layout_width="match_parent"
         android:layout_height="10dp" />
+
     <TextView
-        android:textColor="@android:color/black"
         android:id="@+id/education_single_row_thesis_topic_heading"
-        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/education_thesis_topic"
+        android:textColor="@color/checked"
         android:textSize="17sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/education_thesis_topic"/>
+        android:textStyle="bold" />
+
     <TextView
-        android:textColor="@android:color/black"
         android:id="@+id/education_single_row_thesis_topic"
-        android:textStyle="bold|italic"
-        android:textSize="16sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:textColor="@color/checked"
+        android:textSize="16sp"
+        android:textStyle="bold|italic" />
+
     <android.support.v4.widget.Space
         android:layout_width="match_parent"
         android:layout_height="10dp" />
@@ -116,24 +128,26 @@
     <android.support.v4.widget.Space
         android:layout_width="match_parent"
         android:layout_height="10dp" />
+
     <TextView
-        android:textColor="@android:color/black"
         android:id="@+id/education_single_row_applied_technologies_heading"
-        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/education_applied_technologies"
+        android:textColor="@color/checked"
         android:textSize="17sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/education_applied_technologies"/>
+        android:textStyle="bold" />
+
     <TextView
-        android:textColor="@android:color/black"
         android:id="@+id/education_single_row_applied_technologies"
-        android:textStyle="bold|italic"
-        android:textSize="16sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:textColor="@color/checked"
+        android:textSize="16sp"
+        android:textStyle="bold|italic" />
+
     <android.support.v4.widget.Space
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:background="@color/colorAccent"/>
+        android:background="@color/colorAccent" />
 </LinearLayout>

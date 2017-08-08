@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.borucki.mycv.dto.MyEducationDTO;
+import co.borucki.mycv.dto.MySkillsDTO;
 import co.borucki.mycv.dto.PersonalDataDTO;
 import co.borucki.mycv.model.MyEducation;
+import co.borucki.mycv.model.MySkills;
 import co.borucki.mycv.model.PersonalData;
 
 
@@ -58,4 +60,25 @@ public class Mapper {
 
         return resultList;
     }
+
+    public static List<MySkills> fromMySkillsDTOToMySkills(List<MySkillsDTO> mySkillsDTOs) {
+        List<MySkills> resultList = new ArrayList<>();
+        for (MySkillsDTO mySkillsDTO : mySkillsDTOs) {
+            resultList.add(new MySkills(mySkillsDTO.getType()
+                    , mySkillsDTO.getName()
+                    , mySkillsDTO.getLevel()
+                    , mySkillsDTO.getLanguage()));
+        }
+
+        return resultList;
+    }
+
+    public static MySkills fromMySkillsDTOToMySkills(MySkillsDTO mySkillsDTO) {
+        return new MySkills(mySkillsDTO.getType()
+                , mySkillsDTO.getName()
+                , mySkillsDTO.getLevel()
+                , mySkillsDTO.getLanguage());
+    }
+
+
 }

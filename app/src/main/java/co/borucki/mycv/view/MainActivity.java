@@ -26,6 +26,7 @@ import co.borucki.mycv.repository.PersonalDataRepository;
 import co.borucki.mycv.repository.PersonalDataRepositoryImpl;
 import co.borucki.mycv.view.fragments.ContactFragment;
 import co.borucki.mycv.view.fragments.EducationFragment;
+import co.borucki.mycv.view.fragments.SkillsFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private PersonalDataRepository mRepository = PersonalDataRepositoryImpl.getInstance();
@@ -111,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fragment = EducationFragment.newInstance();
                 break;
             case R.id.navigationMenuSkills:
-//                fragment = SkillsFragment.newInstance();
+                fragment = SkillsFragment.newInstance();
                 break;
             case R.id.navigationMenuHobby:
 //                fragment = HobbyFragment.newInstance();
