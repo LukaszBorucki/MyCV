@@ -3,6 +3,7 @@ package co.borucki.mycv.view;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import co.borucki.mycv.R;
 import co.borucki.mycv.model.CvItem;
 import co.borucki.mycv.model.MailItem;
 import co.borucki.mycv.model.NoItem;
@@ -70,10 +72,13 @@ public class CvRow extends LinearLayout {
     private TextView setupTextField(Context context, CvItem cvItem) {
         TextView textField = new TextView(context);
         textField.setText(cvItem.getCaption());
+
+        textField.setTextColor(ContextCompat.getColor(context, R.color.checked));
+
         textField.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         textField.setGravity(Gravity.CENTER_VERTICAL);
         textField.setPadding(convertDpToPixel(32, context), 0, 0, 0);
-        textField.setTextSize(16);
+        textField.setTextSize(24);
         return textField;
     }
 

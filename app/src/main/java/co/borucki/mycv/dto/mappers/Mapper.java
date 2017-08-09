@@ -5,6 +5,7 @@ import java.util.List;
 
 import co.borucki.mycv.dto.BranchDTO;
 import co.borucki.mycv.dto.EmployerDTO;
+import co.borucki.mycv.dto.HobbiesDTO;
 import co.borucki.mycv.dto.LanguageDTO;
 import co.borucki.mycv.dto.MyEducationDTO;
 import co.borucki.mycv.dto.MySkillsDTO;
@@ -13,6 +14,7 @@ import co.borucki.mycv.dto.PersonalDataDTO;
 import co.borucki.mycv.dto.ProjectDTO;
 import co.borucki.mycv.model.Branch;
 import co.borucki.mycv.model.Employer;
+import co.borucki.mycv.model.Hobbies;
 import co.borucki.mycv.model.Language;
 import co.borucki.mycv.model.MyEducation;
 import co.borucki.mycv.model.MySkills;
@@ -150,5 +152,16 @@ public class Mapper {
         }
 
         return languages;
+    }
+
+    public static List<Hobbies> fromHobbiesDTOToHobbies(List<HobbiesDTO> hobbiesDTOs) {
+        List<Hobbies> hobbies = new ArrayList<>();
+        for (HobbiesDTO hobbiesDTO : hobbiesDTOs) {
+            hobbies.add(new Hobbies(hobbiesDTO.getLogo()
+                    , hobbiesDTO.getDescription()
+                    , hobbiesDTO.getLanguage()));
+        }
+
+        return hobbies;
     }
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/hobbies_logo"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/hobbies_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:paddingLeft="@dimen/padding"
+        android:paddingStart="@dimen/padding"
+        android:textColor="@color/checked"
+        android:textSize="20sp"
+        android:textStyle="bold|italic" />
+</LinearLayout>

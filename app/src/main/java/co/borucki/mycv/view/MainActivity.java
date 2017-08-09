@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -22,11 +23,13 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.borucki.mycv.R;
+import co.borucki.mycv.model.Hobbies;
 import co.borucki.mycv.repository.PersonalDataRepository;
 import co.borucki.mycv.repository.PersonalDataRepositoryImpl;
 import co.borucki.mycv.view.fragments.ContactFragment;
 import co.borucki.mycv.view.fragments.EducationFragment;
 import co.borucki.mycv.view.fragments.ExperienceFragment;
+import co.borucki.mycv.view.fragments.HobbiesFragment;
 import co.borucki.mycv.view.fragments.LanguageFragment;
 import co.borucki.mycv.view.fragments.SkillsFragment;
 
@@ -119,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fragment = LanguageFragment.newInstance();
                 break;
             case R.id.navigationMenuHobby:
-//                fragment = HobbyFragment.newInstance();
+                fragment = HobbiesFragment.newInstance();
                 break;
 
             case R.id.navigationMenuSendMail:
