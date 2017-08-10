@@ -23,6 +23,9 @@ public class MyCVSharedPreferences {
     private static final String LINKEDIN_PROFILE = "linked_in_profile";
     private static final String GITHUB_PROFILE = "github_profile";
     private static final String PERSONAL_PHOTO = "my_photo";
+    private static final String APP_LANGUAGE = "language";
+    private static final String ABOUT_PL = "about_pl";
+    private static final String ABOUT_EN = "about_en";
 
 
     private final SharedPreferences mSharedPreferences;
@@ -32,56 +35,56 @@ public class MyCVSharedPreferences {
     }
 
     public String getName() {
-        return mSharedPreferences.getString(NAME, "NA");
+        return mSharedPreferences.getString(NAME, "N/A");
     }
 
     public String getSurname() {
-        return mSharedPreferences.getString(SURNAME, "NA");
+        return mSharedPreferences.getString(SURNAME, "N/A");
     }
 
     public String getPhone() {
-        return mSharedPreferences.getString(PHONE, "NA");
+        return mSharedPreferences.getString(PHONE, "N/A");
 
     }
 
     public String getEmail() {
-        return mSharedPreferences.getString(EMAIL, "NA");
+        return mSharedPreferences.getString(EMAIL, "N/A");
     }
 
     public String getWebService() {
-        return mSharedPreferences.getString(WEB_SERVICE, "NA");
+        return mSharedPreferences.getString(WEB_SERVICE, "N/A");
     }
 
     public String getHomeAddressCity() {
-        return mSharedPreferences.getString(HOME_ADDRESS_CITY, "NA");
+        return mSharedPreferences.getString(HOME_ADDRESS_CITY, "N/A");
     }
 
     public String getHomeAddressStreet() {
-        return mSharedPreferences.getString(HOME_ADDRESS_STREET, "NA");
+        return mSharedPreferences.getString(HOME_ADDRESS_STREET, "N/A");
     }
 
     public String getHomeAddressNo() {
-        return mSharedPreferences.getString(HOME_ADDRESS_NO, "NA");
+        return mSharedPreferences.getString(HOME_ADDRESS_NO, "N/A");
     }
 
     public String getHomeAddressPost() {
-        return mSharedPreferences.getString(HOME_ADDRESS_POST, "NA");
+        return mSharedPreferences.getString(HOME_ADDRESS_POST, "N/A");
     }
 
     public String getHomeAddressGoogleLocation() {
-        return mSharedPreferences.getString(HOME_ADDRESS_GOOGLE_LOCATION, "NA");
+        return mSharedPreferences.getString(HOME_ADDRESS_GOOGLE_LOCATION, "N/A");
     }
 
     public String getSkypeUserName() {
-        return mSharedPreferences.getString(SKYPE_USER_NAME, "NA");
+        return mSharedPreferences.getString(SKYPE_USER_NAME, "N/A");
     }
 
     public String getLinkedInProfile() {
-        return mSharedPreferences.getString(LINKEDIN_PROFILE, "NA");
+        return mSharedPreferences.getString(LINKEDIN_PROFILE, "N/A");
     }
 
     public String getGitHubProfile() {
-        return mSharedPreferences.getString(GITHUB_PROFILE, "NA");
+        return mSharedPreferences.getString(GITHUB_PROFILE, "N/A");
     }
 
     public String getPhoto() {
@@ -194,7 +197,7 @@ public class MyCVSharedPreferences {
     }
 
     public String getAccessPermissionPassword() {
-        return mSharedPreferences.getString(ACCESS_PERMISSION_PASSWORD, "NA");
+        return mSharedPreferences.getString(ACCESS_PERMISSION_PASSWORD, "N/A");
     }
 
     public String getAccessPermissionMail() {
@@ -207,5 +210,35 @@ public class MyCVSharedPreferences {
         editor.putString(ACCESS_PERMISSION_MAIL, mail);
         editor.commit();
 
+    }
+
+    public String getAccessPermissionAppLanguage() {
+        return mSharedPreferences.getString(APP_LANGUAGE, "");
+    }
+
+    public void setAccessPermissionAppLanguage(String language) {
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putString(APP_LANGUAGE, language);
+        editor.commit();
+    }
+
+    public void setAboutPl(String aboutPl) {
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putString(ABOUT_PL, aboutPl);
+        editor.commit();
+    }
+
+    public String getAboutPl() {
+        return mSharedPreferences.getString(ABOUT_PL,"N/A");
+    }
+
+    public void setAboutEn(String aboutEn) {
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putString(ABOUT_EN, aboutEn);
+        editor.commit();
+    }
+
+    public String getAboutEn() {
+        return  mSharedPreferences.getString(ABOUT_EN,"N/A");
     }
 }

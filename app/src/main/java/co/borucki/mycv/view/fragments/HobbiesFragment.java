@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
@@ -20,14 +21,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import co.borucki.mycv.LocaleHelper;
 import co.borucki.mycv.R;
 import co.borucki.mycv.adapter.HobbiesAdapter;
-import co.borucki.mycv.adapter.LanguageAdapter;
 import co.borucki.mycv.dto.HobbiesDTO;
-import co.borucki.mycv.dto.LanguageDTO;
 import co.borucki.mycv.dto.mappers.Mapper;
 import co.borucki.mycv.model.Hobbies;
-import co.borucki.mycv.model.Language;
 import co.borucki.mycv.security.ApplicationAccessPermission;
 import co.borucki.mycv.security.ApplicationAccessPermissionImpl;
 import co.borucki.mycv.security.MD5Encryption;
@@ -69,20 +68,23 @@ public class HobbiesFragment extends Fragment {
         mHobbiesAdapter = new HobbiesAdapter(getActivity());
         mRecyclerView.setAdapter(mHobbiesAdapter);
 
-
-        new GetAllLanguagesAsyncTask().execute();
+        if (LocaleHelper.isOnLine(getContext())) {
+            new GetAllHobbiesAsyncTask().execute();
+        } else {
+            Toast.makeText(getContext(), R.string.no_internet, Toast.LENGTH_LONG).show();
+        }
 
     }
 
 
-    private class GetAllLanguagesAsyncTask extends AsyncTask<Void, Void, List<HobbiesDTO>> {
+    private class GetAllHobbiesAsyncTask extends AsyncTask<Void, Void, List<HobbiesDTO>> {
 
         @Override
         protected void onPostExecute(List<HobbiesDTO> hobbiesDTOs) {
             List<Hobbies> selectedList = new ArrayList<>();
             List<Hobbies> hobbies = Mapper.fromHobbiesDTOToHobbies(hobbiesDTOs);
             for (Hobbies hobbiesForeach : hobbies) {
-                if (hobbiesForeach.getLanguage().equals("en")) {
+                if (hobbiesForeach.getLanguage().equals(mAccessPermission.getAppLanguage())) {
                     selectedList.add(hobbiesForeach);
 
                 }
@@ -94,8 +96,8 @@ public class HobbiesFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             progressDialog = new ProgressDialog(getActivity());
-            progressDialog.setMessage("Lading data ...");
-            progressDialog.setTitle("Info:");
+            progressDialog.setMessage(getString(R.string.progress_dialog_text));
+            progressDialog.setTitle(getString(R.string.progress_dialog_title));
             progressDialog.setCancelable(false);
             progressDialog.show();
         }

@@ -1,5 +1,7 @@
 package co.borucki.mycv.view;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -7,17 +9,16 @@ import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
@@ -30,9 +31,12 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import co.borucki.mycv.LocaleHelper;
 import co.borucki.mycv.R;
 import co.borucki.mycv.dto.PersonalDataDTO;
 import co.borucki.mycv.dto.mappers.Mapper;
@@ -47,6 +51,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class SplashActivity extends AppCompatActivity {
     private PersonalDataRepository mRepository = PersonalDataRepositoryImpl.getInstance();
     private ApplicationAccessPermission mAccessPermission = ApplicationAccessPermissionImpl.getInstance();
+    ProgressDialog mProgressDialog;
     private String mVisitor = null;
     private String mPassword = null;
     @BindView(R.id.splash_activity_circle_image)
@@ -55,8 +60,18 @@ public class SplashActivity extends AppCompatActivity {
     TextView mNameAndSurname;
     @BindView(R.id.splash_activity_phone_no)
     TextView mPhoneNo;
+    @BindView(R.id.splash_activity_about)
+    TextView mAbout;
+    @BindView(R.id.splash_counter)
+    TextView mCounter;
 
     private boolean handlerFlag = false;
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base, mAccessPermission.getAppLanguage()));
+    }
+
 
     @Override
     protected void onPause() {
@@ -94,6 +109,25 @@ public class SplashActivity extends AppCompatActivity {
         setImageFromString(mRepository.getPhoto());
         mPhoneNo.setText(mRepository.getPhone());
         mNameAndSurname.setText(mRepository.getName() + " " + mRepository.getSurname());
+        if (mAccessPermission.getAppLanguage().equals("") || mAccessPermission.getAppLanguage() == null) {
+            String displayLanguage = Locale.getDefault().getLanguage();
+            if (!displayLanguage.equals("pl") && !displayLanguage.equals("en")) {
+                mAccessPermission.setAppLanguage("en");
+                LocaleHelper.setLocale(this, "en");
+            } else {
+                mAccessPermission.setAppLanguage(displayLanguage);
+                LocaleHelper.setLocale(this, displayLanguage);
+            }
+
+        } else {
+            LocaleHelper.setLocale(this, mAccessPermission.getAppLanguage());
+        }
+
+        if (mAccessPermission.getAppLanguage().equals("pl")) {
+            mAbout.setText(mRepository.getAboutPl());
+        } else {
+            mAbout.setText(mRepository.getAboutEn());
+        }
     }
 
     private void showAskDialogLogin() {
@@ -106,7 +140,7 @@ public class SplashActivity extends AppCompatActivity {
         window.getDecorView().getWindowVisibleDisplayFrame(displayRectangle);
 
         dialogView.setMinimumWidth((int) (displayRectangle.width() * 0.9f));
-        dialogView.setMinimumHeight((int) (displayRectangle.height() * 0.9f));
+//        dialogView.setMinimumHeight((int) (displayRectangle.height() * 0.9f));
         final EditText password = (EditText) dialogView.findViewById(R.id.security_password);
         final EditText userEmail = (EditText) dialogView.findViewById(R.id.userEmail);
         userEmail.setText(mAccessPermission.getAccessMail());
@@ -115,11 +149,28 @@ public class SplashActivity extends AppCompatActivity {
                 .setPositiveButton("Enter", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        new CheckPassword()
-                                .execute(userEmail.getText().toString(), password.getText().toString());
+                        if (LocaleHelper.isOnLine(getApplicationContext())) {
+                            new CheckPassword()
+                                    .execute(userEmail.getText().toString(), password.getText().toString());
+                        } else {
+                            showAskDialogLogin();
+                        }
                     }
 
                 });
+
+        builder.setView(dialogView)
+                .setNegativeButton("Reset", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        mAccessPermission.setAccessMail("mail");
+                        mAccessPermission.setAccessPermission(false);
+                        showAskDialogRegister();
+
+                    }
+
+                });
+
         builder.create().show();
 
     }
@@ -135,7 +186,7 @@ public class SplashActivity extends AppCompatActivity {
         window.getDecorView().getWindowVisibleDisplayFrame(displayRectangle);
 
         dialogView.setMinimumWidth((int) (displayRectangle.width() * 0.9f));
-        dialogView.setMinimumHeight((int) (displayRectangle.height() * 0.9f));
+//        dialogView.setMinimumHeight((int) (displayRectangle.height() * 0.9f));
 
         final EditText userEmail = (EditText) dialogView.findViewById(R.id.user_email);
 
@@ -147,8 +198,12 @@ public class SplashActivity extends AppCompatActivity {
                                 && !userEmail.getText().toString().equals("")
 
                                 ) {
-                            new AskForPassword().execute(userEmail.getText().toString());
-                            mVisitor = userEmail.getText().toString();
+                            if (LocaleHelper.isOnLine(getApplicationContext())) {
+                                new AskForPassword().execute(userEmail.getText().toString());
+                                mVisitor = userEmail.getText().toString();
+                            } else {
+                                showAskDialogRegister();
+                            }
 
                         } else {
                             showAskDialogRegister();
@@ -160,14 +215,30 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void runMainScrees() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
+        new CountDownTimer(15000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                mCounter.setText(getString(R.string.splash_skip, millisUntilFinished / 1000));
+            }
+
+            public void onFinish() {
                 if (!handlerFlag) {
+
                     navigateToMenuScreen();
                 }
+//                mCounter.setText("done!");
+                //start new activity
             }
-        }, 3000);
+        }.start();
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                if (!handlerFlag) {
+//
+//                    navigateToMenuScreen();
+//                }
+//            }
+//        }, 15000);
 
     }
 
@@ -175,6 +246,11 @@ public class SplashActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 
+    }
+
+    @OnClick(R.id.splash_counter)
+    public void skipCounter() {
+        startActivity(new Intent(this, MainActivity.class));
     }
 
     private class CheckPassword extends AsyncTask<String, Void, String> {
@@ -310,10 +386,17 @@ public class SplashActivity extends AppCompatActivity {
             mRepository.setLinkedInProfile(personalData.getLinkedIn());
             mRepository.setGitHubProfile(personalData.getGitHub());
             mRepository.setPhoto(personalData.getPhoto());
+            mRepository.setAboutPl(personalData.getAboutPl());
+            mRepository.setAboutEn(personalData.getAboutEn());
+
             mNameAndSurname.setText(mRepository.getName() + " " + mRepository.getSurname());
             mPhoneNo.setText(mRepository.getPhone());
             setImageFromString(personalData.getPhoto());
-
+            if (mAccessPermission.getAppLanguage().equals("pl")) {
+                mAbout.setText(personalData.getAboutPl());
+            } else {
+                mAbout.setText(personalData.getAboutEn());
+            }
             runMainScrees();
         }
 
@@ -326,15 +409,14 @@ public class SplashActivity extends AppCompatActivity {
 
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.getMessageConverters().add(new GsonHttpMessageConverter());
-            String d = restTemplate.toString();
             return restTemplate.getForObject(link, PersonalDataDTO.class);
 
         }
     }
 
 
-    public void setImageFromString(String bitmap){
-        if( !bitmap.equalsIgnoreCase("") ){
+    public void setImageFromString(String bitmap) {
+        if (!bitmap.equalsIgnoreCase("")) {
             Bitmap bitmapDecode = decodeBase64(bitmap);
 
             mImage.setImageBitmap(bitmapDecode);
@@ -342,9 +424,8 @@ public class SplashActivity extends AppCompatActivity {
 
     }
 
-    public static Bitmap decodeBase64(String input)
-    {
+    public static Bitmap decodeBase64(String input) {
         byte[] decodedByte = Base64.decode(input, 0);
-        return BitmapFactory.decodeByteArray(decodedByte, 0,   decodedByte.length);
+        return BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
     }
 }

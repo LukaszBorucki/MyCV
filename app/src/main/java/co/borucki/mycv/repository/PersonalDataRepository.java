@@ -30,6 +30,10 @@ public interface PersonalDataRepository {
 
     String getPhoto();
 
+    String getAboutPl();
+
+    String getAboutEn();
+
     void setName(String name);
 
     void setSurname(String surname);
@@ -57,4 +61,8 @@ public interface PersonalDataRepository {
     void setGitHubProfile(String gitHub);
 
     void setPhoto(String photo);
+
+    void setAboutPl(String aboutPl);
+
+    void setAboutEn(String aboutEn);
 }

@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import co.borucki.mycv.LocaleHelper;
 import co.borucki.mycv.R;
 import co.borucki.mycv.adapter.SkillsTechnologiesAdapter;
 import co.borucki.mycv.adapter.SkillsTraitsAdapter;
@@ -72,20 +74,22 @@ public class SkillsFragment extends Fragment {
         mSkillsTechnologiesAdapter = new SkillsTechnologiesAdapter(getActivity());
         mRecyclerViewTechnologies.setAdapter(mSkillsTechnologiesAdapter);
 
-
-        new GetAllMyEducationAsyncTask().execute();
-
+        if (LocaleHelper.isOnLine(getContext())) {
+            new GetAllMySkillsAsyncTask().execute();
+        } else {
+            Toast.makeText(getContext(), R.string.no_internet, Toast.LENGTH_LONG).show();
+        }
 
     }
 
 
-    private class GetAllMyEducationAsyncTask extends AsyncTask<Void, Void, List<MySkillsDTO>> {
+    private class GetAllMySkillsAsyncTask extends AsyncTask<Void, Void, List<MySkillsDTO>> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             mProgressDialog = new ProgressDialog(getActivity());
-            mProgressDialog.setMessage("Lading data ...");
-            mProgressDialog.setTitle("Info:");
+            mProgressDialog.setMessage(getString(R.string.progress_dialog_text));
+            mProgressDialog.setTitle(getString(R.string.progress_dialog_title));
             mProgressDialog.setCancelable(false);
             mProgressDialog.show();
         }
@@ -112,7 +116,7 @@ public class SkillsFragment extends Fragment {
                 if (mMySkillse.getType().equals("technology")) {
                     mySkillsListTechnology.add(mMySkillse);
                 } else {
-                    if (mMySkillse.getLanguage().equals("en")) {
+                    if (mMySkillse.getLanguage().equals(mAccessPermission.getAppLanguage())) {
                         mySkillsListTraits.add(mMySkillse);
                     }
                 }
@@ -121,8 +125,6 @@ public class SkillsFragment extends Fragment {
 
             mSkillsTechnologiesAdapter.setData(mySkillsListTechnology);
             mSkillsTraitsAdapter.setData(mySkillsListTraits);
-
-
 
 
             mProgressDialog.dismiss();

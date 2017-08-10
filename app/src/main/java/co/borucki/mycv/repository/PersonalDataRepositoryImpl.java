@@ -88,6 +88,16 @@ public class PersonalDataRepositoryImpl implements PersonalDataRepository {
     }
 
     @Override
+    public String getAboutPl() {
+        return mSharedPreferences.getAboutPl();
+    }
+
+    @Override
+    public String getAboutEn() {
+        return mSharedPreferences.getAboutEn();
+    }
+
+    @Override
     public void setName(String name) {
         mSharedPreferences.setName(name);
     }
@@ -155,5 +165,15 @@ public class PersonalDataRepositoryImpl implements PersonalDataRepository {
     @Override
     public void setPhoto(String photo) {
         mSharedPreferences.setPhoto(photo);
+    }
+
+    @Override
+    public void setAboutPl(String aboutPl) {
+        mSharedPreferences.setAboutPl(aboutPl);
+    }
+
+    @Override
+    public void setAboutEn(String aboutEn) {
+        mSharedPreferences.setAboutEn(aboutEn);
     }
 }

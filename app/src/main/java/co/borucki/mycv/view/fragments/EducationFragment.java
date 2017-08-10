@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import co.borucki.mycv.LocaleHelper;
 import co.borucki.mycv.R;
 import co.borucki.mycv.adapter.EducationAdapter;
 import co.borucki.mycv.dto.MyEducationDTO;
@@ -66,8 +68,11 @@ public class EducationFragment extends Fragment {
         mEducationAdapter = new EducationAdapter(getActivity());
         mRecyclerView.setAdapter(mEducationAdapter);
 
-
-        new GetAllMyEducationAsyncTask().execute();
+        if (LocaleHelper.isOnLine(getContext())) {
+            new GetAllMyEducationAsyncTask().execute();
+        } else {
+            Toast.makeText(getContext(), R.string.no_internet, Toast.LENGTH_LONG).show();
+        }
 
     }
 
@@ -79,7 +84,7 @@ public class EducationFragment extends Fragment {
             List<MyEducation> selectedList = new ArrayList<>();
             List<MyEducation> myEducations = Mapper.fromMyEducationDTOToMyEducation(myEducationDTOList);
             for (MyEducation myEducation : myEducations) {
-                if (myEducation.getLanguage().equals("en")) {
+                if (myEducation.getLanguage().equals(mAccessPermission.getAppLanguage())) {
                     selectedList.add(myEducation);
 
                 }
@@ -91,8 +96,8 @@ public class EducationFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             progressDialog = new ProgressDialog(getActivity());
-            progressDialog.setMessage("Lading data ...");
-            progressDialog.setTitle("Info:");
+            progressDialog.setMessage(getString(R.string.progress_dialog_text));
+            progressDialog.setTitle(getString(R.string.progress_dialog_title));
             progressDialog.setCancelable(false);
             progressDialog.show();
         }

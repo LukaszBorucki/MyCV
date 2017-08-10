@@ -38,7 +38,10 @@ public class Mapper {
                 , personalDataDTO.getSkype()
                 , personalDataDTO.getLinkedIn()
                 , personalDataDTO.getGoogleLocation()
-                , personalDataDTO.getPhoto());
+                , personalDataDTO.getPhoto()
+                , personalDataDTO.getAboutPl()
+                , personalDataDTO.getAboutEn()
+        );
     }
 
     public static MyEducation fromMyEducationDTOToMyEducation(MyEducationDTO myEducationDTO) {
