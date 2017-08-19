@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyCV</string>
+    <string name="app_name">Łukasz Borucki - CV</string>
     <string name="name_and_surname">Imię Nazwisko</string>
     <string name="phone_no">Nr telefonu</string>
     <string name="splash_data_dialog_password">Hasło</string>
