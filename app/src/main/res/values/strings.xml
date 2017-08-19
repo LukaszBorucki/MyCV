@@ -29,6 +29,7 @@
     <string name="menu_information">Information</string>
     <string name="menu_reset">Reset configuration</string>
     <string name="progress_dialog_text">Lading data in progress...</string>
+    <string name="progress_dialog_mail_text">Sending messages in progress ...</string>
     <string name="progress_dialog_title">Info:</string>
     <string name="alert_dialog_reset">If you press "YES" all data (authorization, my personal data) will be deleted.\n This operation is not reversible.</string>
     <string name="alert_dialog_title">Warning:</string>
@@ -39,5 +40,13 @@
     <string name="add_to_contact_book">Add to contact book</string>
     <string name="refresh_data">Refresh data</string>
     <string name="no_internet">Sorry, some problems with you Internet.  Please chceck your Internet connection and try again.</string>
+    <string name="send_mail_message_content">Message content</string>
+    <string name="send_message_button">Send a message</string>
+    <string name="send_mail_error_message">Please enter a message before sending</string>
+    <string name="send_mail_subject">Message from MyCV Api from:</string>
+    <string name="send_message_clear">Clear</string>
+    <string name="message_sent">Message sent</string>
+    <string name="message_not_send">Message not sent.\\nPlease try again later.</string>
+    <string name="splas_activity_register">Register</string>
 
 </resources>

@@ -1,7 +1,5 @@
 package co.borucki.mycv.view;
 
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,7 +8,6 @@ import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
@@ -51,7 +48,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class SplashActivity extends AppCompatActivity {
     private PersonalDataRepository mRepository = PersonalDataRepositoryImpl.getInstance();
     private ApplicationAccessPermission mAccessPermission = ApplicationAccessPermissionImpl.getInstance();
-    ProgressDialog mProgressDialog;
     private String mVisitor = null;
     private String mPassword = null;
     @BindView(R.id.splash_activity_circle_image)
@@ -66,12 +62,6 @@ public class SplashActivity extends AppCompatActivity {
     TextView mCounter;
 
     private boolean handlerFlag = false;
-
-    @Override
-    protected void attachBaseContext(Context base) {
-        super.attachBaseContext(LocaleHelper.onAttach(base, mAccessPermission.getAppLanguage()));
-    }
-
 
     @Override
     protected void onPause() {
@@ -90,7 +80,6 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
-//        mAccessPermission.setAccessPermission(false);
         setSplashActivityData();
         if (mAccessPermission.getAccessMail().equals("mail")
                 || mAccessPermission.getAccessMail() == null) {
@@ -140,7 +129,6 @@ public class SplashActivity extends AppCompatActivity {
         window.getDecorView().getWindowVisibleDisplayFrame(displayRectangle);
 
         dialogView.setMinimumWidth((int) (displayRectangle.width() * 0.9f));
-//        dialogView.setMinimumHeight((int) (displayRectangle.height() * 0.9f));
         final EditText password = (EditText) dialogView.findViewById(R.id.security_password);
         final EditText userEmail = (EditText) dialogView.findViewById(R.id.userEmail);
         userEmail.setText(mAccessPermission.getAccessMail());
@@ -186,12 +174,11 @@ public class SplashActivity extends AppCompatActivity {
         window.getDecorView().getWindowVisibleDisplayFrame(displayRectangle);
 
         dialogView.setMinimumWidth((int) (displayRectangle.width() * 0.9f));
-//        dialogView.setMinimumHeight((int) (displayRectangle.height() * 0.9f));
 
         final EditText userEmail = (EditText) dialogView.findViewById(R.id.user_email);
 
         builder.setView(dialogView)
-                .setPositiveButton("Register", new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.splas_activity_register, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         if (!userEmail.getText().toString().equals("E-mail")
@@ -226,20 +213,8 @@ public class SplashActivity extends AppCompatActivity {
 
                     navigateToMenuScreen();
                 }
-//                mCounter.setText("done!");
-                //start new activity
             }
         }.start();
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                if (!handlerFlag) {
-//
-//                    navigateToMenuScreen();
-//                }
-//            }
-//        }, 15000);
-
     }
 
     private void navigateToMenuScreen() {

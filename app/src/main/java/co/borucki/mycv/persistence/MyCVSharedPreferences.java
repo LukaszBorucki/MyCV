@@ -1,5 +1,6 @@
 package co.borucki.mycv.persistence;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -26,7 +27,7 @@ public class MyCVSharedPreferences {
     private static final String APP_LANGUAGE = "language";
     private static final String ABOUT_PL = "about_pl";
     private static final String ABOUT_EN = "about_en";
-
+    private static final String MAIL_MESSAGE="mail_message";
 
     private final SharedPreferences mSharedPreferences;
 
@@ -240,5 +241,15 @@ public class MyCVSharedPreferences {
 
     public String getAboutEn() {
         return  mSharedPreferences.getString(ABOUT_EN,"N/A");
+    }
+
+    public String getMessageText() {
+        return mSharedPreferences.getString(MAIL_MESSAGE, "");
+    }
+
+    public void setMessageText(String text) {
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putString(MAIL_MESSAGE, text);
+        editor.commit();
     }
 }

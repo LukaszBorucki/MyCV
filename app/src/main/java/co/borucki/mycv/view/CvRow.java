@@ -63,8 +63,10 @@ public class CvRow extends LinearLayout {
     }
 
     private void setupLayout(Context context) {
-        this.setLayoutParams(new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, convertDpToPixel(48, context)));
-        this.setPadding(convertDpToPixel(16, context), 0, convertDpToPixel(16, context), 0);
+        this.setLayoutParams(new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                convertDpToPixel(64, context)));
+        this.setPadding(convertDpToPixel(16, context), 0,convertDpToPixel(16, context),0);
+
         this.setOrientation(LinearLayout.HORIZONTAL);
     }
 

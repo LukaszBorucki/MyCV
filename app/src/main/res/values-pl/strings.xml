@@ -7,7 +7,7 @@
     <string name="splash_data_dialog_user_name">Imię</string>
     <string name="splash_data_dialog_user_surname">Nazwisko</string>
     <string name="dialog_info">Info:</string>
-    <string name="dialog_info_text">Po zarejestrowaniu na twój adres e-mail zostanie wysłane hasło do aplikacji.\nProszę o cierpliwość wiadomości z hasłem wysyłąmraz dziennie.</string>
+    <string name="dialog_info_text">Po zarejestrowaniu na twój adres e-mail zostanie wysłane hasło do aplikacji.\nProszę o cierpliwość wiadomości z hasłem wysyłam raz dziennie.</string>
     <string name="education">#Edukacja</string>
     <string name="skills">#Umiejętności</string>
     <string name="hobby">#Zinteresowania</string>
@@ -28,8 +28,9 @@
     <string name="menu_change_language">Zmień język</string>
     <string name="menu_information">Informacja</string>
     <string name="menu_reset">Wyczyść dane</string>
-    <string name="progres_dialog_text">Pobieranie danych ...</string>
-    <string name="progress_dialog_title">Infoemacja:</string>
+    <string name="progress_dialog_text">Pobieranie danych ...</string>
+    <string name="progress_dialog_mail_text">Wysyłanie wiadomości w toku ...</string>
+    <string name="progress_dialog_title">Informacja:</string>
     <string name="alert_dialog_reset">Jeśli wybierzesz "TAK" wszystkie dane (autoruzacyjne, moje personalne) zostaną usunięte.\nTa operacja nie jest odwracalna.</string>
     <string name="alert_dialog_title">Uwaga:</string>
     <string name="alert_dialog_confirm">TAK</string>
@@ -40,5 +41,13 @@ z Ustawą z dnia 29.08.1997 roku o Ochronie Danych Osobowych; tekst jednolity: D
     <string name="add_to_contact_book">Dodaj do książki adresowej</string>
     <string name="refresh_data">Odśwież dane</string>
     <string name="no_internet">Przepraszam, wystąpił problem z połączeniem internetowym. Proszę sprawdzić połączenie z internetem i spróbować ponownie</string>
+    <string name="send_mail_message_content">Treść wiadomości</string>
+    <string name="send_message_button">Wyślij e-mail</string>
+    <string name="send_mail_error_message">Proszę wpisać wiadomość przed wysyłką.</string>
+    <string name="send_mail_subject">Wiadomość z MyCV Api od:</string>
+    <string name="send_message_clear">Wyczyść</string>
+    <string name="message_sent">Wiadomość wysłana</string>
+    <string name="message_not_send">Wiadomość nie została wysłana.\nProszę spróbować ponownie później.</string>
+    <string name="splas_activity_register">Zarejestruj</string>
 
 </resources>

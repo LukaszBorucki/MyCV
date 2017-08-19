@@ -52,6 +52,7 @@ import co.borucki.mycv.view.fragments.EducationFragment;
 import co.borucki.mycv.view.fragments.ExperienceFragment;
 import co.borucki.mycv.view.fragments.HobbiesFragment;
 import co.borucki.mycv.view.fragments.LanguageFragment;
+import co.borucki.mycv.view.fragments.SendMailFragment;
 import co.borucki.mycv.view.fragments.SkillsFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -268,7 +269,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.navigationMenuSendMail:
-//                fragment = FormFragment.newInstance();
+                fragment = SendMailFragment.newInstance();
                 break;
 
         }
@@ -286,6 +287,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
     }
+
+
+
     private class GetMyPersonalDataAsyncTask extends AsyncTask<Void, Void, PersonalDataDTO> {
         @Override
         protected void onPostExecute(PersonalDataDTO personalDataDTO) {

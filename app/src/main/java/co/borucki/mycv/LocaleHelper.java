@@ -22,7 +22,14 @@ public class LocaleHelper {
                 && conMgr.getActiveNetworkInfo().isAvailable()
                 && conMgr.getActiveNetworkInfo().isConnected()){
 
-            return true;
+            try {
+                Process p1 = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.com");
+                int returnVal = p1.waitFor();
+                boolean reachable = (returnVal==0);
+                return reachable;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
 
         }
