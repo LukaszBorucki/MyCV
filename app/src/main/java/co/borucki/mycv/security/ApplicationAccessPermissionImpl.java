@@ -46,4 +46,14 @@ public class ApplicationAccessPermissionImpl implements ApplicationAccessPermiss
     public void setAccessPassword(String password) {
         mSharedPreferences.setAccessPermissionPassword(password);
     }
+
+    @Override
+    public String getAppLanguage() {
+        return mSharedPreferences.getAccessPermissionAppLanguage();
+    }
+
+    @Override
+    public void setAppLanguage(String language) {
+        mSharedPreferences.setAccessPermissionAppLanguage(language);
+    }
 }

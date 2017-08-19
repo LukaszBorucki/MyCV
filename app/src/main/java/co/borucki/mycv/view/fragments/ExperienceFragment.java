@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
@@ -18,6 +19,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
 import java.util.List;
 
+import co.borucki.mycv.LocaleHelper;
 import co.borucki.mycv.R;
 import co.borucki.mycv.adapter.ExperienceAdapter;
 import co.borucki.mycv.dto.EmployerDTO;
@@ -56,8 +58,11 @@ public class ExperienceFragment extends Fragment {
         mRecyclerView.addItemDecoration(dividerItemDecoration);
         mExperienceAdapter = new ExperienceAdapter(getActivity());
         mRecyclerView.setAdapter(mExperienceAdapter);
-
-        new getAllExperiences().execute();
+        if (LocaleHelper.isOnLine(getContext())) {
+            new getAllExperiences().execute();
+        } else {
+            Toast.makeText(getContext(), R.string.no_internet, Toast.LENGTH_LONG).show();
+        }
     }
 
 
@@ -65,8 +70,8 @@ public class ExperienceFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             mProgressDialog = new ProgressDialog(getActivity());
-            mProgressDialog.setMessage("Lading data ...");
-            mProgressDialog.setTitle("Info:");
+            mProgressDialog.setMessage(getString(R.string.progress_dialog_text));
+            mProgressDialog.setTitle(getString(R.string.progress_dialog_title));
             mProgressDialog.setCancelable(false);
             mProgressDialog.show();
         }

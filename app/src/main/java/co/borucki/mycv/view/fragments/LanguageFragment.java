@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import co.borucki.mycv.LocaleHelper;
 import co.borucki.mycv.R;
 import co.borucki.mycv.adapter.EducationAdapter;
 import co.borucki.mycv.adapter.LanguageAdapter;
@@ -69,8 +71,11 @@ public class LanguageFragment extends Fragment {
         mLanguageAdapter = new LanguageAdapter(getActivity());
         mRecyclerView.setAdapter(mLanguageAdapter);
 
-
-        new GetAllLanguagesAsyncTask().execute();
+        if (LocaleHelper.isOnLine(getContext())) {
+            new GetAllLanguagesAsyncTask().execute();
+        } else {
+            Toast.makeText(getContext(), R.string.no_internet, Toast.LENGTH_LONG).show();
+        }
 
     }
 
@@ -82,7 +87,7 @@ public class LanguageFragment extends Fragment {
             List<Language> selectedList = new ArrayList<>();
             List<Language> languages = Mapper.fromLanguageDTOToLanguage(languageDTOs);
             for (Language language : languages) {
-                if (language.getLanguage().equals("en")) {
+                if (language.getLanguage().equals(mAccessPermission.getAppLanguage())) {
                     selectedList.add(language);
 
                 }
@@ -94,8 +99,8 @@ public class LanguageFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             progressDialog = new ProgressDialog(getActivity());
-            progressDialog.setMessage("Lading data ...");
-            progressDialog.setTitle("Info:");
+            progressDialog.setMessage(getString(R.string.progress_dialog_text));
+            progressDialog.setTitle(getString(R.string.progress_dialog_title));
             progressDialog.setCancelable(false);
             progressDialog.show();
         }

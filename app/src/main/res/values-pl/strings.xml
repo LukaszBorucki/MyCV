@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">Łukasz Borucki - CV</string>
+    <string name="name_and_surname">Imię Nazwisko</string>
+    <string name="phone_no">Nr telefonu</string>
+    <string name="splash_data_dialog_password">Hasło</string>
+    <string name="splash_data_dialog_user_email">E-mail</string>
+    <string name="splash_data_dialog_user_name">Imię</string>
+    <string name="splash_data_dialog_user_surname">Nazwisko</string>
+    <string name="dialog_info">Info:</string>
+    <string name="dialog_info_text">Po zarejestrowaniu na twój adres e-mail zostanie wysłane hasło do aplikacji.\nProszę o cierpliwość wiadomości z hasłem wysyłam raz dziennie.</string>
+    <string name="education">#Edukacja</string>
+    <string name="skills">#Umiejętności</string>
+    <string name="hobby">#Zinteresowania</string>
+    <string name="send_a_message">#Wyślij wiadomość</string>
+    <string name="experience">#Doświadczenie</string>
+    <string name="contact">#Dane kontaktowe</string>
+    <string name="error_no_skype">Przepraszam, nie posiadasz zainstalowanego Skype na swoim użądzeniu.</string>
+    <string name="mail_service_subject">Wiadomość z aplikacji MyCV</string>
+    <string name="mail_service_message">Zapraszamy na rozmowę kwalofikacyjną</string>
+    <string name="my_mane_surname_phone">Imię Nazwisko Nr telefonu</string>
+    <string name="education_thesis_topic">Temat pracy dyplomowej:</string>
+    <string name="education_applied_technologies">Zastosowane technologie:</string>
+    <string name="education_level_of_education">Poziom wykształcenia:</string>
+    <string name="academy_logotype">Logo uczelni</string>
+    <string name="skills_technologies">#Technologie</string>
+    <string name="skills_traits">#Cechy</string>
+    <string name="menu_foreign_languages">#Języki obce</string>
+    <string name="menu_change_language">Zmień język</string>
+    <string name="menu_information">Informacja</string>
+    <string name="menu_reset">Wyczyść dane</string>
+    <string name="progress_dialog_text">Pobieranie danych ...</string>
+    <string name="progress_dialog_mail_text">Wysyłanie wiadomości w toku ...</string>
+    <string name="progress_dialog_title">Informacja:</string>
+    <string name="alert_dialog_reset">Jeśli wybierzesz "TAK" wszystkie dane (autoruzacyjne, moje personalne) zostaną usunięte.\nTa operacja nie jest odwracalna.</string>
+    <string name="alert_dialog_title">Uwaga:</string>
+    <string name="alert_dialog_confirm">TAK</string>
+    <string name="alert_dialog_cancel">ANULUJ</string>
+    <string name="alert_dialog_info">Wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb niezbędnych do realizacji procesu rekrutacji (zgodnie
+z Ustawą z dnia 29.08.1997 roku o Ochronie Danych Osobowych; tekst jednolity: Dz. U. 2016 r. poz. 922).</string>
+    <string name="splash_skip">pomiń za: %d s</string>
+    <string name="add_to_contact_book">Dodaj do książki adresowej</string>
+    <string name="refresh_data">Odśwież dane</string>
+    <string name="no_internet">Przepraszam, wystąpił problem z połączeniem internetowym. Proszę sprawdzić połączenie z internetem i spróbować ponownie</string>
+    <string name="send_mail_message_content">Treść wiadomości</string>
+    <string name="send_message_button">Wyślij e-mail</string>
+    <string name="send_mail_error_message">Proszę wpisać wiadomość przed wysyłką.</string>
+    <string name="send_mail_subject">Wiadomość z MyCV Api od:</string>
+    <string name="send_message_clear">Wyczyść</string>
+    <string name="message_sent">Wiadomość wysłana</string>
+    <string name="message_not_send">Wiadomość nie została wysłana.\nProszę spróbować ponownie później.</string>
+    <string name="splas_activity_register">Zarejestruj</string>
+
+</resources>

@@ -42,9 +42,9 @@ public class ContactFragment extends Fragment {
 
     private void setupRows() {
         CvRow[] arrayRows = new CvRow[]{
-                new CvRow(getActivity(), new PhoneItem(mRepository.getPhone(), R.drawable.ic_phone_black_24dp)),
-                new CvRow(getActivity(), new MailItem(mRepository.getEmail(), R.drawable.ic_mail_black_24dp)),
-                new CvRow(getActivity(), new WebItem(mRepository.getWebService(), R.drawable.ic_www_black_24dp, "http://" + mRepository.getWebService())),
+                new CvRow(getActivity(), new PhoneItem(mRepository.getPhone(), R.drawable.ic_phone_dark_blue_24dp)),
+                new CvRow(getActivity(), new MailItem(mRepository.getEmail(), R.drawable.ic_mail_dark_blue_24dp)),
+                new CvRow(getActivity(), new WebItem(mRepository.getWebService(), R.drawable.ic_www_dark_blue_24dp, "http://" + mRepository.getWebService())),
                 new CvRow(getActivity(), new WebItem(mRepository.getHomeAddressStreet()
                         + " "
                         + mRepository.getHomeAddressNo()
@@ -52,13 +52,13 @@ public class ContactFragment extends Fragment {
                         + mRepository.getHomeAddressPost()
                         + " "
                         + mRepository.getHomeAddressCity()
-                        , R.drawable.ic_home_address_black_24dp, mRepository.getHomeAddressGoogleLocation())),
+                        , R.drawable.ic_home_address_dark_blue_24dp, mRepository.getHomeAddressGoogleLocation())),
 
-                new CvRow(getActivity(), new WebItem(mRepository.getGitHubProfile(), R.drawable.ic_github_black_24dp, "http://github.com/"
+                new CvRow(getActivity(), new WebItem(mRepository.getGitHubProfile(), R.drawable.ic_github_dark_blue_24dp, "http://github.com/"
                         + mRepository.getGitHubProfile())),
-                new CvRow(getActivity(), new WebItem(mRepository.getLinkedInProfile(), R.drawable.ic_linkedin_black_24dp, "http://www.linkedin.com/in/"
+                new CvRow(getActivity(), new WebItem(mRepository.getLinkedInProfile(), R.drawable.ic_linkedin_dark_blue_24dp, "http://www.linkedin.com/in/"
                         + mRepository.getLinkedInProfile())),
-                new CvRow(getActivity(), new SkypeItem(mRepository.getSkypeUserName(), R.drawable.ic_skype_black_24dp))};
+                new CvRow(getActivity(), new SkypeItem(mRepository.getSkypeUserName(), R.drawable.ic_skype_dark_blue_24dp))};
         for (CvRow item : arrayRows)
             rowHolder.addView(item);
 

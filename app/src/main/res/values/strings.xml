@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyCV</string>
+    <string name="app_name">Lukasz Borucki - CV</string>
     <string name="name_and_surname">Name Surname</string>
     <string name="phone_no">Phone No.</string>
     <string name="splash_data_dialog_password">Password</string>
@@ -25,5 +25,28 @@
     <string name="skills_technologies">#Technologies</string>
     <string name="skills_traits">#Traits</string>
     <string name="menu_foreign_languages">#Foreign languages</string>
+    <string name="menu_change_language">Change language</string>
+    <string name="menu_information">Information</string>
+    <string name="menu_reset">Reset configuration</string>
+    <string name="progress_dialog_text">Lading data in progress...</string>
+    <string name="progress_dialog_mail_text">Sending messages in progress ...</string>
+    <string name="progress_dialog_title">Info:</string>
+    <string name="alert_dialog_reset">If you press "YES" all data (authorization, my personal data) will be deleted.\n This operation is not reversible.</string>
+    <string name="alert_dialog_title">Warning:</string>
+    <string name="alert_dialog_confirm">YES</string>
+    <string name="alert_dialog_cancel">CANCEL</string>
+    <string name="alert_dialog_info">I hereby agree to process my personal data for the purposes necessary for the recruitment process (In accordance with the Act of 29.08.1997 on the Protection of Personal Data; Unified text: Journal of Laws 2016 y. pos. 922).</string>
+    <string name="splash_skip">skip for: %d s</string>
+    <string name="add_to_contact_book">Add to contact book</string>
+    <string name="refresh_data">Refresh data</string>
+    <string name="no_internet">Sorry, some problems with you Internet.  Please chceck your Internet connection and try again.</string>
+    <string name="send_mail_message_content">Message content</string>
+    <string name="send_message_button">Send a message</string>
+    <string name="send_mail_error_message">Please enter a message before sending</string>
+    <string name="send_mail_subject">Message from MyCV Api from:</string>
+    <string name="send_message_clear">Clear</string>
+    <string name="message_sent">Message sent</string>
+    <string name="message_not_send">Message not sent.\\nPlease try again later.</string>
+    <string name="splas_activity_register">Register</string>
 
 </resources>

@@ -23,28 +23,28 @@ import java.util.List;
 
 import co.borucki.mycv.LocaleHelper;
 import co.borucki.mycv.R;
-import co.borucki.mycv.adapter.EducationAdapter;
-import co.borucki.mycv.dto.MyEducationDTO;
+import co.borucki.mycv.adapter.HobbiesAdapter;
+import co.borucki.mycv.dto.HobbiesDTO;
 import co.borucki.mycv.dto.mappers.Mapper;
-import co.borucki.mycv.model.MyEducation;
+import co.borucki.mycv.model.Hobbies;
 import co.borucki.mycv.security.ApplicationAccessPermission;
 import co.borucki.mycv.security.ApplicationAccessPermissionImpl;
 import co.borucki.mycv.security.MD5Encryption;
 
 
-public class EducationFragment extends Fragment {
+public class HobbiesFragment extends Fragment {
     private RecyclerView mRecyclerView;
-    private EducationAdapter mEducationAdapter;
+    private HobbiesAdapter mHobbiesAdapter;
     private ProgressDialog progressDialog;
     private ApplicationAccessPermission mAccessPermission = ApplicationAccessPermissionImpl.getInstance();
 
-    public EducationFragment() {
+    public HobbiesFragment() {
         // Required empty public constructor
     }
 
-    public static EducationFragment newInstance() {
+    public static HobbiesFragment newInstance() {
 
-        return new EducationFragment();
+        return new HobbiesFragment();
     }
 
     @Override
@@ -52,7 +52,7 @@ public class EducationFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        return inflater.inflate(R.layout.fragment_education, container, false);
+        return inflater.inflate(R.layout.fragment_hobbies, container, false);
     }
 
 
@@ -60,16 +60,16 @@ public class EducationFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.education_fragment_list_view);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.hobbies_fragment_list_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         mRecyclerView.setLayoutManager(linearLayoutManager);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getActivity(), linearLayoutManager.getOrientation());
         mRecyclerView.addItemDecoration(dividerItemDecoration);
-        mEducationAdapter = new EducationAdapter(getActivity());
-        mRecyclerView.setAdapter(mEducationAdapter);
+        mHobbiesAdapter = new HobbiesAdapter(getActivity());
+        mRecyclerView.setAdapter(mHobbiesAdapter);
 
         if (LocaleHelper.isOnLine(getContext())) {
-            new GetAllMyEducationAsyncTask().execute();
+            new GetAllHobbiesAsyncTask().execute();
         } else {
             Toast.makeText(getContext(), R.string.no_internet, Toast.LENGTH_LONG).show();
         }
@@ -77,19 +77,19 @@ public class EducationFragment extends Fragment {
     }
 
 
-    private class GetAllMyEducationAsyncTask extends AsyncTask<Void, Void, List<MyEducationDTO>> {
+    private class GetAllHobbiesAsyncTask extends AsyncTask<Void, Void, List<HobbiesDTO>> {
 
         @Override
-        protected void onPostExecute(List<MyEducationDTO> myEducationDTOList) {
-            List<MyEducation> selectedList = new ArrayList<>();
-            List<MyEducation> myEducations = Mapper.fromMyEducationDTOToMyEducation(myEducationDTOList);
-            for (MyEducation myEducation : myEducations) {
-                if (myEducation.getLanguage().equals(mAccessPermission.getAppLanguage())) {
-                    selectedList.add(myEducation);
+        protected void onPostExecute(List<HobbiesDTO> hobbiesDTOs) {
+            List<Hobbies> selectedList = new ArrayList<>();
+            List<Hobbies> hobbies = Mapper.fromHobbiesDTOToHobbies(hobbiesDTOs);
+            for (Hobbies hobbiesForeach : hobbies) {
+                if (hobbiesForeach.getLanguage().equals(mAccessPermission.getAppLanguage())) {
+                    selectedList.add(hobbiesForeach);
 
                 }
             }
-            mEducationAdapter.setData(selectedList);
+            mHobbiesAdapter.setData(selectedList);
             progressDialog.dismiss();
         }
 
@@ -103,15 +103,15 @@ public class EducationFragment extends Fragment {
         }
 
         @Override
-        protected List<MyEducationDTO> doInBackground(Void... params) {
-            String link = "http://www.borucki.co/api/education/?id="
+        protected List<HobbiesDTO> doInBackground(Void... params) {
+            String link = "http://www.borucki.co/api/hobbies/?id="
                     + mAccessPermission.getAccessMail()
                     + "&pass="
                     + MD5Encryption.encrypt(mAccessPermission.getAccessPassword());
 
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.getMessageConverters().add(new GsonHttpMessageConverter());
-            return Arrays.asList(restTemplate.getForObject(link, MyEducationDTO[].class));
+            return Arrays.asList(restTemplate.getForObject(link, HobbiesDTO[].class));
 
         }
     }

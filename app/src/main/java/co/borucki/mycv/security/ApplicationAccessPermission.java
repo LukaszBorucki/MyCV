@@ -14,4 +14,8 @@ public interface ApplicationAccessPermission {
 
     void setAccessPassword(String password);
 
+    String getAppLanguage();
+
+    void setAppLanguage(String language);
+
 }

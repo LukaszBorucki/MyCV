@@ -17,11 +17,13 @@ public class PersonalDataDTO {
     private String linkedIn;
     private String googleLocation;
     private String photo;
+    private String aboutPl;
+    private String aboutEn;
 
     public PersonalDataDTO() {
     }
 
-    public PersonalDataDTO(Long id, String name, String surname, String phoneNo, String email, String city, String street, String houseNo, String postCode, String gitHub, String webService, String skype, String linkedIn, String googleLocation, String photo) {
+    public PersonalDataDTO(Long id, String name, String surname, String phoneNo, String email, String city, String street, String houseNo, String postCode, String gitHub, String webService, String skype, String linkedIn, String googleLocation, String photo, String aboutPl, String aboutEn) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -37,6 +39,8 @@ public class PersonalDataDTO {
         this.linkedIn = linkedIn;
         this.googleLocation = googleLocation;
         this.photo = photo;
+        this.aboutPl = aboutPl;
+        this.aboutEn = aboutEn;
     }
 
     public Long getId() {
@@ -157,5 +161,21 @@ public class PersonalDataDTO {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public String getAboutPl() {
+        return aboutPl;
+    }
+
+    public void setAboutPl(String aboutPl) {
+        this.aboutPl = aboutPl;
+    }
+
+    public String getAboutEn() {
+        return aboutEn;
+    }
+
+    public void setAboutEn(String aboutEn) {
+        this.aboutEn = aboutEn;
     }
 }

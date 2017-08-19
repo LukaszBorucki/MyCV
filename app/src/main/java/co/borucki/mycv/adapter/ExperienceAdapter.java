@@ -23,8 +23,11 @@ import co.borucki.mycv.model.Branch;
 import co.borucki.mycv.model.Employer;
 import co.borucki.mycv.model.PeriodOfEmployment;
 import co.borucki.mycv.model.Project;
+import co.borucki.mycv.security.ApplicationAccessPermission;
+import co.borucki.mycv.security.ApplicationAccessPermissionImpl;
 
 public class ExperienceAdapter extends RecyclerView.Adapter<ExperienceAdapter.EmployerViewHolder> {
+    private ApplicationAccessPermission mAccessPermission = ApplicationAccessPermissionImpl.getInstance();
     private final LayoutInflater mLayoutInflater;
     private RecyclerView mRecyclerViewPeriods;
     private RecyclerView mRecyclerViewProjects;
@@ -65,7 +68,7 @@ public class ExperienceAdapter extends RecyclerView.Adapter<ExperienceAdapter.Em
         Resources res = holder.itemView.getContext().getResources();
         String nameOfBranchInUsedLanguage = null;
         for (Branch branch : employer.getBranch()) {
-            if (branch.getLanguage().equals("en")) {
+            if (branch.getLanguage().equals(mAccessPermission.getAppLanguage())) {
                 nameOfBranchInUsedLanguage = branch.getBranchName();
             }
         }
@@ -75,13 +78,13 @@ public class ExperienceAdapter extends RecyclerView.Adapter<ExperienceAdapter.Em
         holder.mLogotype.setImageBitmap(BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length));
         List<PeriodOfEmployment> periodOfEmployments = new ArrayList<>();
         for (PeriodOfEmployment periodOfEmployment : employer.getPeriodOfEmployment()) {
-            if (periodOfEmployment.getLanguage().equals("en")) {
+            if (periodOfEmployment.getLanguage().equals(mAccessPermission.getAppLanguage())) {
                 periodOfEmployments.add(periodOfEmployment);
             }
         }
         List<Project> projects = new ArrayList<>();
         for (Project project : employer.getProjects()) {
-            if (project.getLanguage().equals("en")) {
+            if (project.getLanguage().equals(mAccessPermission.getAppLanguage())) {
                 projects.add(project);
             }
         }
